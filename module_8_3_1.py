@@ -35,12 +35,14 @@ class Car:
     def __init__(self, model, __vin, __numbers):
         # создадим атрибут объекта "model" - название автомобиля (строка).
         self.model = model
-        # создадим атрибут объекта "__vin" - vin номер автомобиля (целое число).
-        self.__vin = __vin
-        self.__is_valid_vin(__vin)
-        # создадим атрибут объекта "__numbers" - номер автомобиля (строка).
-        self.__numbers = __numbers
-        self.__is_valid_numbers(__numbers)
+        # создадим атрибут объекта "__vin" - vin номер автомобиля (целое число), при условии если в
+        # методе "__is_valid_vin" не возникло исключений.
+        if self.__is_valid_vin(__vin):
+            self.__vin = __vin
+        # создадим атрибут объекта "__numbers" - номер автомобиля (строка), при условии если в
+        # методе "__is_valid_numbers" не возникло исключений.
+        if self.__is_valid_numbers(__numbers):
+            self.__numbers = __numbers
 
     @staticmethod
     # создадим метод "__is_valid_vin", который принимает один атрибут "vin_number".
